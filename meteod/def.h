@@ -6,8 +6,11 @@
 #ifndef __DEF_H__
 #define __DEF_H__
 
+#define BUFF_SIZE 1024
+
 #define RET_CODE_OK		 0
 #define RET_CODE_LOG_OPEN_ERROR	-1
+#define RET_CODE_FORK_FAIL	-2
 
 #define DEFAULT_LOG_FILENAME "/var/log/meteod.log"
 #define DEFAULT_CONFIG_FILENAME "/etc/meteo.conf"
