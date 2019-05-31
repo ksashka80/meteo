@@ -10,10 +10,12 @@
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
+#include <syslog.h>
 
 #include "def.h"
 #include "main.h"
 #include "log.h"
+#include "signals.h"
 
 extern CONTROL control;
 extern CONFIG config;
@@ -27,6 +29,8 @@ void goToDaemon()
     if(control.debug_level>DEBUG_LEVEL_NORMAL)
 	logWrite("Начало функции демонизации goToDaemon()");
 
+    if(control.debug_level>DEBUG_LEVEL_NORMAL)
+	    logWrite("Вызов функции fork()");
     pid=fork();
     if(pid<0)
     {
@@ -74,7 +78,13 @@ void goToDaemon()
 	if(x!=control.logfile) close(x);
     }
 
+    signalHandlersConfig();
+
     if(control.debug_level>DEBUG_LEVEL_NORMAL)
 	    logWrite("Перешли в режим демона");
+    if(control.debug_level>DEBUG_LEVEL_SILENT)
+	    syslog(LOG_NOTICE,"Перешли в режим демона");
+
+
     return;
 }

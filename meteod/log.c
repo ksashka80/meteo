@@ -35,8 +35,8 @@ void logOpen()
 	    exit(RET_CODE_LOG_OPEN_ERROR);
 	}
     }
-    else if(control.debug_level>DEBUG_LEVEL_NORMAL) syslog(LOG_NOTICE,"Журнал (%s) успешн открыт для записи",config.log_filename);
-    if(control.debug_level>DEBUG_LEVEL_NORMAL) logWrite("Журнал успешн открыт для записи");
+    else if(control.debug_level>DEBUG_LEVEL_NORMAL) syslog(LOG_NOTICE,"Журнал (%s) успешно открыт для записи",config.log_filename);
+    if(control.debug_level>DEBUG_LEVEL_NORMAL) logWrite("Журнал успешно открыт для записи");
 }
 
 void logClose()

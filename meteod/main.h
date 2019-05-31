@@ -18,10 +18,12 @@ typedef struct
     int debug_level;
     int log_fail;
     int logfile;
+    int exit_flag;
 } CONTROL;
 
 // Прототипы функций
 void initDefaults();
+void exitDaemon();
 
 #endif // __MAIN_H__
 

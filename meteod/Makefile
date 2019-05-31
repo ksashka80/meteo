@@ -2,8 +2,8 @@
 CC	=	gcc
 CFLAGS	=	-c -Wall
 LDFLAGS	=	
-SOURCES	=	main.c log.c config.c daemon.c
-HEADERS =	def.h main.h log.h config.h datapkt.h daemon.h
+SOURCES	=	main.c log.c config.c daemon.c signals.c
+HEADERS =	def.h main.h log.h config.h datapkt.h daemon.h signals.h
 OBJECTS	=	$(SOURCES:.c=.o)
 EXEC	=	meteod
 
