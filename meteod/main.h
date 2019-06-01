@@ -11,6 +11,7 @@
 typedef struct
 {
     char log_filename[PATH_MAX];
+    int server_port;
 } CONFIG;
 
 typedef struct

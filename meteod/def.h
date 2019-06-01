@@ -7,6 +7,9 @@
 #define __DEF_H__
 
 #define BUFF_SIZE 1024
+#define MAX_STRING_LENGTH 1024
+#define IP_STRING_LENGTH 16
+#define PKT_QUEUE_LENGTH 10
 
 #define RET_CODE_OK		 0
 #define RET_CODE_LOG_OPEN_ERROR	-1
@@ -14,6 +17,7 @@
 
 #define DEFAULT_LOG_FILENAME "/var/log/meteod.log"
 #define DEFAULT_CONFIG_FILENAME "/etc/meteo.conf"
+#define DEFAULT_SERVER_PORT 28028
 
 #define LOG_FAIL_EXIT			0
 #define LOG_FAIL_IGNOR			1
