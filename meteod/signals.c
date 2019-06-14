@@ -7,6 +7,8 @@
 #include <string.h>
 #include <signal.h>
 #include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "def.h"
 #include "main.h"
@@ -19,6 +21,7 @@ void signalHandlersConfigFail();
 void handlerSIGUSR1(int sig);
 void handlerSIGUSR2(int sig);
 void handlerSIGHUP(int sig);
+void handlerSIGCHLD(int sig);
 
 void signalHandlersConfig()
 {
@@ -46,6 +49,14 @@ void signalHandlersConfig()
     act.sa_handler=handlerSIGHUP;
     sigaction(SIGHUP,&act,0);
 
+    if((sigemptyset(&sigset))==-1) signalHandlersConfigFail();
+    if((sigaddset(&sigset,SIGCHLD))==-1) signalHandlersConfigFail();
+    act.sa_mask=sigset;
+    act.sa_handler=handlerSIGCHLD;
+    sigaction(SIGCHLD,&act,0);
+
+
+
     if(control.debug_level>DEBUG_LEVEL_NORMAL) logWrite("Обработчик сигналов установлен");
 }
 
@@ -63,6 +74,11 @@ void handlerSIGUSR2(int sig)
 void handlerSIGHUP(int sig)
 {
     logWrite("Получен сигнал SIGHUP");
+}
+
+void handlerSIGCHLD(int sig)
+{
+    waitpid(-1,NULL,WNOHANG);
 }
 
 void signalHandlersConfigFail()

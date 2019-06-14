@@ -71,7 +71,7 @@ int main(int argc,char* argv[])
 	sock_con=accept(sock_lst,(struct sockaddr*)&srvaddr,&len);
 	if(sock_con==-1 && control.debug_level>DEBUG_LEVEL_NORMAL)
 	{
-	    snprintf(msg,BUFF_SIZE,"Ошибка обработки запроса из очереди подключений:%s",strerror(errno));
+	    snprintf(msg,BUFF_SIZE,"Ошибка обработки запроса из очереди подключений: %s",strerror(errno));
 	    logWrite(msg);
 	    continue;
 	}
@@ -86,7 +86,7 @@ int main(int argc,char* argv[])
 	{
 	    if(control.debug_level>DEBUG_LEVEL_SILENT)
 	    {
-		snprintf(msg,BUFF_SIZE,"Ошибка функции fork():%s",strerror(errno));
+		snprintf(msg,BUFF_SIZE,"Ошибка функции fork(): %s",strerror(errno));
 		logWrite(msg);
 	    }
 	    close(sock_con);
