@@ -20,6 +20,7 @@
 #include "daemon.h"
 #include "log.h"
 #include "signals.h"
+#include "pkthandle.h"
 
 CONFIG config;
 CONTROL control;
@@ -104,6 +105,7 @@ int main(int argc,char* argv[])
 		snprintf(msg,BUFF_SIZE,"Получено %d байт(а)",length);
 		logWrite(msg);
 	    }
+	    HandlePacket(buff,length);
 	}
 	close(sock_con);
 	close(sock_lst);
@@ -121,6 +123,9 @@ void initDefaults()
 {
     config.server_port=DEFAULT_SERVER_PORT;
     strcpy(config.log_filename,DEFAULT_LOG_FILENAME);
+    strcpy(config.dbUserName,DEFAULT_DB_USER_NAME);
+    strcpy(config.dbPass,DEFAULT_DB_PASSWORD);
+    strcpy(config.dbBaseName,DEFAULT_DB_DATABASE_NAME);
     control.debug_level=DEBUG_LEVEL_FULL;
     control.log_fail=LOG_FAIL_EXIT;
     control.logfile=-1;

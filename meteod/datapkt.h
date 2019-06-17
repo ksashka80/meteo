@@ -9,17 +9,18 @@
 typedef struct
 {
     int sensorID;
-    int sersorVersion;
+    int sersorType;
     float temperature;
     float pressure;
     float humidity;
-} DATA;
+} DATA_BME280;
 
 typedef struct
 {
-    DATA data;
+    int pktVersion;
     unsigned short crc;
-} DATAPKT;
+    DATA_BME280 data;
+} PKT_TYPE1;
 
 #endif // __DATAPKT_H__
 

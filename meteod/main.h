@@ -12,6 +12,9 @@ typedef struct
 {
     char log_filename[PATH_MAX];
     int server_port;
+    char dbUserName[MYSQL_MAX_USERNAME_LEN];
+    char dbPass[MYSQL_MAX_PASS_LEN];
+    char dbBaseName[MYSQL_MAX_DATABASE_NAME_LEN];
 } CONFIG;
 
 typedef struct

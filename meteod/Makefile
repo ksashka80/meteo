@@ -1,9 +1,11 @@
 # Make file 
 CC	=	gcc
-CFLAGS	=	-c -Wall
+CFLAGS	=	-c -Wall 
+MYSQLCF :=	$(shell mysql_config --cflags)
 LDFLAGS	=	
-SOURCES	=	main.c log.c config.c daemon.c signals.c
-HEADERS =	def.h main.h log.h config.h datapkt.h daemon.h signals.h
+MYSQLLDF:=	$(shell mysql_config --libs)
+SOURCES	=	main.c log.c config.c daemon.c signals.c pkthandle.c
+HEADERS =	def.h main.h log.h config.h datapkt.h daemon.h signals.h pkthndla.h
 OBJECTS	=	$(SOURCES:.c=.o)
 EXEC	=	meteod
 
@@ -12,10 +14,10 @@ EXEC	=	meteod
 all: $(SOURCES) $(EXEC)
 
 $(EXEC): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(MYSQLLDF)
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@ $(MYSQLCF)
 
 install: $(EXEC)
 	cp $(EXEC) /usr/local/bin
