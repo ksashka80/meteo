@@ -20,7 +20,7 @@ typedef struct
     int pktVersion;
     unsigned short crc;
     DATA_BME280 data;
-} PKT_TYPE1;
+} PKT_BME280;
 
 #endif // __DATAPKT_H__
 
