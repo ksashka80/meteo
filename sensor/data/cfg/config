@@ -1,0 +1,4 @@
+mode=STA
+name=meteosensor
+ID=1
+CRC=0x1AD9

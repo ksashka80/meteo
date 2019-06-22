@@ -1,0 +1,84 @@
+@font-face
+{
+	font-family: Alien; 
+	src: url("./alien.otf");
+}
+
+@font-face
+{
+	font-family: Dotdisplay; 
+	src: url("./dotdisplay.ttf");
+}
+
+@font-face
+{
+	font-family: Dotmatrix; 
+	src: url("./dotmatrix.otf");
+}
+
+@font-face
+{
+	font-family: Pixelforce; 
+	src: url("./pixelforce.ttf");
+}
+
+BODY
+{
+	/* background-color: lightcyan; */
+	/* background-color: RGB(83,78,68); */
+	/* color: RGB(40,185,54); */
+	width: 480px;
+	font-family: Dotdisplay;
+}
+
+INPUT
+{
+	/* background-color: RGB(125,125,124); */
+	/* color: RGB(40,185,54); */
+	font-family: Dotdisplay;
+	font-size: 14pt;
+}
+
+TABLE
+{
+	border-collapse: collapse;
+}
+
+CAPTION
+{
+	text-align: center;
+	font-size: 24pt;
+	margin-top: 5pt;
+	font-family: Alien;
+}
+
+TH
+{
+	padding-top: 14pt;
+	padding-bottom: 8pt;
+	text-align: left;
+	font-size: 14pt;
+	font-family: Dotmatrix;
+	/* font-weight: bold;*/
+	font-variant: italic; 
+}
+
+TR
+{
+
+}
+
+TD
+{
+
+}
+
+.right
+{
+	text-align: right;
+}
+
+.left
+{
+	text-align: left;
+}
